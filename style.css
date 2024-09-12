@@ -1,0 +1,372 @@
+:root {
+  --pink: #f14e95;
+  --bg: #f5f5f5; /* Warna abu-abu terang atau putih untuk kesan lebih lembut */
+  --secondary: #a7007d;
+  --shadow: 0 2px 2px rgb(0 0 0 / 0.5);
+}
+
+body {
+  font-size: 1.2rem;
+  font-family: "Work Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.hero {
+  position: absolute; /* Pastikan section #hero berada di atas */
+  width: 100%;
+  min-height: 100vh;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  opacity: 1;
+  transform: translateY(0); /* Mulai pada posisi normal */
+}
+
+#hero.animate-out {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(img/1.png);
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: brightness(80%); /* Gelapkan gambar dengan mengatur brightness */
+}
+
+.hero h1,
+.hero h3,
+.hero p,
+.hero h4 {
+  text-shadow: var(--shadow);
+}
+
+img {
+  border: 0.4rem solid var(--pink);
+}
+
+.hero h1,
+.hero h4 {
+  font-family: "Gill Sans", sans-serif;
+  color: var(--pink);
+}
+
+.hero h1 {
+  font-size: 4rem;
+}
+
+.hero h3 {
+  font-family: "Pacifico", system-ui;
+  color: #ffc0cb;
+  font-size: 2rem;
+}
+
+.hero h4 {
+  font-size: 1.6rem;
+}
+
+.hero p {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.text-sm {
+  font-size: 1rem;
+  color: var(--secondary);
+}
+
+.home h2,
+.undangan h3,
+.acara h3,
+.galeri h3,
+.hadiah h3,
+.last h3 {
+  color: var(--pink);
+  font-family: "Pacifico", system-ui;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.acara,
+.galeri,
+.hadiah,
+.last {
+  padding-top: 10rem;
+  padding-bottom: 8rem;
+}
+
+.hero a,
+.acara a,
+.hadiah a,
+.hadiah button {
+  color: var(--pink);
+  background-color: white;
+}
+
+.hero a:hover,
+.acara a:hover,
+.hadiah a:hover,
+.hadiah button:hover {
+  color: white;
+  background-color: var(--pink);
+}
+
+.home {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in, visibility 1s ease-in;
+  background-image: url(img/1.png);
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+}
+
+.home.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.home h1,
+.undangan h1 {
+  color: var(--pink);
+  font-family: "Playwrite HR", cursive;
+  font-size: 2rem;
+}
+
+.home h2,
+.home img {
+  margin-top: 1.5rem;
+}
+
+.home img {
+  margin-bottom: 2rem;
+}
+
+.doa {
+  background-color: var(--bg);
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  border: thick double var(--pink);
+}
+
+.doa h3 {
+  font-size: 1.6rem;
+  color: var(--pink);
+}
+.undangan,
+.galeri {
+  background-image: url(img/1.png);
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.undangan h3 {
+  margin-bottom: 2rem;
+}
+
+.undangan img {
+  width: 200px;
+}
+
+.undangan p {
+  margin-top: 0.2rem;
+}
+
+.acara h3,
+.galeri h3,
+.hadiah h3 {
+  padding-bottom: 2rem;
+}
+
+/* General radio button style */
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+/* Change color when the radio button is checked */
+.form-check-input:checked {
+  background-color: pink;
+  border-color: pink;
+}
+
+/* Optional: you can add a hover effect to make it more interactive */
+.form-check-input:hover {
+  cursor: pointer;
+  background-color: #ffcccc;
+}
+
+.acara .card {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ) !important; /* Transparent background for cards */
+  color: var(--pink) !important; /* Text color */
+  border: 1px solid var(--pink); /* Border color */
+}
+
+.acara .card-header {
+  border: 1px solid #999; /* Border color */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 0.1rem; /* Letter spacing */
+}
+
+.acara .card-body,
+.acara .card-footer {
+  font-size: 1rem; /* Font size for card body and footer */
+}
+
+.acara .card-footer {
+  border-top: 1px solid #999; /* Top border color */
+  font-weight: 0.9rem; /* Font weight */
+}
+
+.acara,
+.hadiah {
+  background-color: var(--bg);
+  min-height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.last {
+  background-image: url(img/1.png);
+  background-size: cover;
+}
+
+/* audio icon wrapper */
+.audio-icon-wrapper {
+  width: 4rem;
+  height: 4rem;
+  font-size: 4rem;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2rem;
+  cursor: pointer;
+  color: var(--pink);
+  opacity: 0.5;
+  mix-blend-mode: difference;
+  animation: rotating 4s linear infinite;
+  transform-origin: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+/* Style untuk card bank */
+
+/* Media Queries */
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 100%;
+  }
+
+  .hero h1 {
+    font-size: 7rem;
+  }
+  .hero h3 {
+    font-size: 4rem;
+  }
+  .hero h4 {
+    font-size: 3rem;
+  }
+  .hero p {
+    font-size: 2rem;
+    margin-top: 3rem;
+  }
+
+  .home {
+    padding-top: 6rem;
+  }
+  .home h1,
+  .undangan h1 {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+  }
+  .home p,
+  .home p {
+    font-size: 1.2rem;
+  }
+  .home img {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 75%;
+  }
+
+  .home {
+    padding-top: 8rem;
+  }
+  .home h1,
+  .undangan h1 {
+    font-size: 3rem;
+  }
+  .home p,
+  .undangan p {
+    font-size: 1.2rem;
+  }
+  .home img {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .undangan {
+    padding-top: 10rem;
+  }
+  .undangan img {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .hadiah .btn {
+    padding-top: 0.5rem;
+  }
+}
