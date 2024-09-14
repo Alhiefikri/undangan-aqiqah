@@ -4,21 +4,23 @@ const audioIcon = document.querySelector(".audio-icon-wrapper i");
 const song = document.querySelector("#song");
 let isPlaying = false;
 
-// Variabel untuk mengendalikan scroll otomatis
-let isAutoScrolling = false;
-
-// Menonaktifkan scroll otomatis
+// Menonaktifkan scroll
 function disableScroll() {
-  window.onscroll = function () {};
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+  window.onscroll = function () {
+    window.scrollTo(scrollTop, scrollLeft);
+  };
+
   rootElement.style.scrollBehavior = "auto";
-  document.body.classList.add("no-scroll"); // Tambahkan kelas no-scroll untuk mencegah scroll
-  stopAudio();
 }
+1;
 
 // Mengaktifkan scroll dan memulai audio
 function enableScroll() {
+  window.onscroll = function () {};
   rootElement.style.scrollBehavior = "smooth";
-  document.body.classList.remove("no-scroll"); // Hapus kelas no-scroll untuk mengaktifkan scroll
   playAudio();
 }
 
@@ -29,21 +31,19 @@ function playAudio() {
   isPlaying = true;
 }
 
-// Menghentikan audio
-function stopAudio() {
-  song.pause();
-  audioIcon.classList.remove("bi-disc");
-  audioIcon.classList.add("bi-pause-circle");
-  isPlaying = false;
-}
-
 // Menangani klik pada ikon audio
 audioIconWrapper.onclick = function () {
   if (isPlaying) {
-    stopAudio();
+    song.pause();
+    audioIcon.classList.remove("bi-disc");
+    audioIcon.classList.add("bi-pause-circle");
   } else {
-    playAudio();
+    song.play();
+    audioIcon.classList.add("bi-disc");
+    audioIcon.classList.remove("bi-pause-circle");
   }
+
+  isPlaying = !isPlaying;
 };
 
 // Menonaktifkan scroll saat halaman dimuat
@@ -58,9 +58,10 @@ const namaContainer2 = document.querySelector(".hero h4 span");
 namaContainer1.innerText = `${pronoun}`.replace(/ ,$/, "");
 namaContainer2.innerText = `${nama}`.replace(/ ,$/, ","); // Menampilkan nama dan kata ganti di elemen
 
-document.querySelector("#nama").value = nama; // Mengisi nilai input dengan nama
+document.querySelector("#nama").value = nama; // Mengiis nilai input dengan nama
 
-// Menangani klik pada tombol "Buka Undangan"
+// Animasi
+// script.js
 document
   .getElementById("viewInvitation")
   .addEventListener("click", function () {
@@ -69,6 +70,9 @@ document
 
     // Tambahkan kelas animasi ke section undangan
     invitationSection.classList.add("animate-out");
+
+    // Tambahkan kelas untuk mencegah scroll
+    document.body.classList.add("no-scroll");
 
     // Tunggu animasi selesai, lalu sembunyikan section undangan dan tampilkan section home
     setTimeout(() => {
@@ -82,36 +86,10 @@ document
       // Gulir halaman ke atas
       window.scrollTo(0, 0);
 
-      // Aktifkan auto scroll
-      isAutoScrolling = true;
-      startAutoScroll();
+      // Kembalikan scroll ke keadaan normal
+      document.body.classList.remove("no-scroll");
     }, 1001); // Sesuaikan dengan durasi animasi
   });
-
-// Auto Scroll
-function startAutoScroll() {
-  const scrollSpeed = 0.5; // kecepatan scroll (semakin kecil semakin lambat)
-  let scrollPosition = 0;
-
-  function autoScroll() {
-    if (isAutoScrolling) {
-      // Scroll halaman
-      window.scrollTo(0, scrollPosition);
-      scrollPosition += scrollSpeed;
-
-      // Reset scroll position jika sudah mencapai akhir halaman
-      if (scrollPosition >= document.body.scrollHeight) {
-        scrollPosition = 0;
-      }
-
-      // Panggil fungsi autoScroll lagi dengan requestAnimationFrame
-      requestAnimationFrame(autoScroll);
-    }
-  }
-
-  // Mulai auto scroll
-  autoScroll();
-}
 
 // Menangani Pengiriman Formulir
 window.addEventListener("load", function () {
@@ -119,7 +97,7 @@ window.addEventListener("load", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault(); // Mencegah pengiriman form default
     const data = new FormData(form); // mengambil data dari formulir
-    const action = e.target.action; // Mendapatkan URL untuk pengirim formulir
+    const action = e.target.action; // Mendapatkan URL untuk pengirim formuler
     fetch(action, {
       method: "POST",
       body: data,
@@ -128,3 +106,5 @@ window.addEventListener("load", function () {
     });
   });
 });
+
+// Auto Scroll
