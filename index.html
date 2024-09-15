@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playwrite+HR:wght@100..400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Cinzel:wght@400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dancing+Script:wght@400..700&display=swap"
       rel="stylesheet"
     />
 
@@ -38,22 +38,19 @@
       class="hero p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
     >
       <main>
-        <h3>Undangan</h3>
-        <h1 class="mt-41">Aqiqah</h1>
-        <img
-          src="img/Kalila.png"
-          alt=""
-          class="img-fluid rounded-circle mt-4"
-          width="200px"
-        />
-        <p class="mt-2">Kepada <br /><span>Bapak/Ibu/Saudara/i</span></p>
+        <canvas id="particleCanvas"></canvas>
+        <h3>Tasyukuran <br />Aqiqah</h3>
+        <h1 class="">Kalila Falisha</h1>
+        <p class="text1 fw-bold">Putri Ahmad Hidayat & Ibu Minarsih</p>
+
+        <p class="text2">Kepada Yth. <br /><span></span></p>
         <h4 class="fw-bold"><span>Nama Tamu</span></h4>
         <a
           href="#home"
           id="viewInvitation"
-          class="btn btn-md mt-3"
+          class="button"
           onclick="enableScroll()"
-          ><i class="bi bi-envelope-open"></i> Lihat Undangan</a
+          ><i class="bi bi-book-fill"></i> Lihat Undangan</a
         >
       </main>
     </section>
@@ -76,6 +73,12 @@
           </div>
         </div>
       </div>
+      <svg viewBox="0 0 1320 300">
+        <path fill="#f14e95" fill-opacity="0.5" />
+        <path fill="#f5f5f5" fill-opacity="0.5" />
+        <path fill="#f14e95" fill-opacity="0.5" />
+        <path fill="#a7007d" fill-opacity="0.5" />
+      </svg>
     </section>
 
     <section id="doa" class="doa">
@@ -146,10 +149,16 @@
 
     <section id="acara" class="acara">
       <div class="container">
+        <!-- Row for Heading and Button -->
         <div class="row justify-content-center">
           <div class="col-md-8 col-10 text-center">
+            <img
+              src="https://www.linkacara.com/Templates/WEDDING-PREMIUM041/assets/images/savethedate.png"
+              alt=""
+              width="200"
+            />
             <h3 data-aos="fade-down" data-aos-duration="2000">
-              Informasi Acara
+              Waktu Dan Tempat
             </h3>
             <p
               class="text-sm"
@@ -157,68 +166,78 @@
               data-aos-duration="2000"
               data-aos-delay="100"
             >
-              Dengan segala kerendahan hati kami berharap kehadiran
-              Bapak/Ibu/Saudara/i dalam acara Tasyakuran Aqiqah anak kami yang
-              akan diselenggarakan.
+              Ingatkan saya melalui google calendar
             </p>
-            <p
-              class="text-sm"
-              data-aos="fade-up"
+            <a
+              href="https://calendar.app.google/A4V3XnQinFCAxpkG6"
+              target="_blank"
+              class="btn btn-light btn-md"
+              data-aos="zoom-out"
               data-aos-duration="2000"
               data-aos-delay="100"
-            ></p>
-          </div>
-          <div class="col-md-6 col-10">
-            <div
-              class="card text-center text-bg-light mb-5"
-              data-aos="flip-left"
-              data-aos-duration="2000"
-              data-aos-delay="200"
             >
-              <div class="card-body">
-                <div class="row justify-content-center">
-                  <div class="col-md-6">
-                    <i class="bi bi-calendar3 d-block"></i>
-                    <span>Sabtu, 21 September 2024</span>
-                  </div>
-                  <div class="col-md-6">
-                    <i class="bi bi-clock d-block"></i>
-                    <span>10.00 s/d Selesai</span>
-                  </div>
-                  <div class="col-md-6 col-lg-12 text-lg-center">
-                    <i class="bi bi-geo-alt-fill d-block"></i>
-                    <span class="text-start"
-                      >Perumahan Bukti Permata Blok Cendana Belakang Kampus 2
-                      Amik Nurmal</span
-                    >
-                  </div>
-                  <p class="text-sm"></p>
-                </div>
+              <i class="bi bi-bell-fill"></i> Atur Pengingat
+            </a>
+          </div>
+        </div>
+
+        <!-- Row for Event Card and Map -->
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-10">
+            <!-- Event Waktu -->
+            <div
+              class="event-card waktu"
+              data-aos="fade-right"
+              data
+              data-aos-duration="2000"
+              data-aos-delay="100"
+            >
+              <div class="side-label">WAKTU</div>
+              <div class="content">
+                <p>Hari & Tanggal: Sabtu, 21 September 2024</p>
+                <p>Jam: 10.00 WITA - Selesai</p>
+                <hr />
               </div>
             </div>
-            <div class="col-md-12 justify-content-center text-center">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d188.61778937957604!2d122.7834227326149!3d-0.9943085397018993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1samik%20nurmal!5e1!3m2!1sid!2sid!4v1725799599375!5m2!1sid!2sid"
-                width="100%"
-                height="250"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-delay="100"
-              ></iframe>
-              <a
-                href="https://maps.app.goo.gl/xeKeEMEhF91pJyWs5"
-                target="_blank"
-                class="btn btn-light btn-sm my-3 d-flex justify-content-center"
-                data-aos="zoom-out"
-                data-aos-duration="2000"
-                data-aos-delay="100"
-                ><i class="bi bi-geo-alt-fill"></i> Petunjuk Arah</a
-              >
+            <!-- Event Tempat -->
+            <div
+              class="event-card tempat"
+              data-aos="fade-left"
+              data-aos-duration="2000"
+              data-aos-delay="2002"
+            >
+              <div class="content">
+                <p>
+                  Rumah Keluarga Bapak Ahmad Hidayat, Perumahan Bukit Permata
+                  Blok Cendana Belakang Kampus 2 Amik Nurmal
+                </p>
+                <hr />
+                <div class="map">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d188.61778937957604!2d122.7834227326149!3d-0.9943085397018993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1samik%20nurmal!5e1!3m2!1sid!2sid!4v1725799599375!5m2!1sid!2sid"
+                    width="100%"
+                    height="200"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                  <!-- Directions Button -->
+                  <a
+                    href="https://maps.app.goo.gl/xeKeEMEhF91pJyWs5"
+                    target="_blank"
+                    class="btn btn-light btn-md"
+                    data-aos="zoom-out"
+                    data-aos-duration="2000"
+                    data-aos-delay="100"
+                  >
+                    <i class="bi bi-geo-alt-fill"></i> Petunjuk Arah
+                  </a>
+                </div>
+              </div>
+              <div class="side-label">TEMPAT</div>
             </div>
+            <!-- Google Maps Embed -->
           </div>
         </div>
       </div>

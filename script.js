@@ -51,11 +51,8 @@ disableScroll();
 
 // Menampilkan Nama dari URL dan Mengisi Input
 const urlParams = new URLSearchParams(window.location.search);
-const nama = urlParams.get("n") || ""; // Mengambil nama dari parameter url
-const pronoun = urlParams.get("p") || "Bapak/Ibu/Saudara/i"; // Mengambil kata ganti dari parameter URL
-const namaContainer1 = document.querySelector(".hero p span");
+const nama = urlParams.get("n") || "Penerima Undangan"; // Mengambil nama dari parameter url
 const namaContainer2 = document.querySelector(".hero h4 span");
-namaContainer1.innerText = `${pronoun}`.replace(/ ,$/, "");
 namaContainer2.innerText = `${nama}`.replace(/ ,$/, ","); // Menampilkan nama dan kata ganti di elemen
 
 document.querySelector("#nama").value = nama; // Mengiis nilai input dengan nama
@@ -107,4 +104,81 @@ window.addEventListener("load", function () {
   });
 });
 
-// Auto Scroll
+// Particle
+const canvas = document.getElementById("particleCanvas");
+const ctx = canvas.getContext("2d");
+
+let particlesArray;
+
+// Adjust canvas size to fit the screen
+function initCanvasSize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", initCanvasSize);
+
+initCanvasSize(); // Initial setup
+
+// Create particle
+class Particle {
+  constructor(x, y, size, speedX, speedY) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.speedX = speedX;
+    this.speedY = speedY;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    // Check for particles out of canvas bounds and reposition
+    if (this.size > 0.2) this.size -= 0.02; // Gradual shrink
+    if (
+      this.x + this.size < 0 ||
+      this.x - this.size > canvas.width ||
+      this.y + this.size < 0 ||
+      this.y - this.size > canvas.height
+    ) {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 3 + 2;
+      this.speedX = Math.random() * 0.6 - 0.3;
+      this.speedY = Math.random() * 0.6 - 0.3;
+    }
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.fill();
+  }
+}
+
+// Initialize particle array
+function initParticles() {
+  particlesArray = [];
+  let numberOfParticles = (canvas.width * canvas.height) / 5000; // Menambah densitas partikel
+  for (let i = 0; i < numberOfParticles; i++) {
+    let size = Math.random() * 3 + 2;
+    let x = Math.random() * (canvas.width - size * 2);
+    let y = Math.random() * (canvas.height - size * 2);
+    let speedX = Math.random() * 0.6 - 0.3;
+    let speedY = Math.random() * 0.6 - 0.3;
+    particlesArray.push(new Particle(x, y, size, speedX, speedY));
+  }
+}
+
+// Animate particles
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < particlesArray.length; i++) {
+    particlesArray[i].update();
+    particlesArray[i].draw();
+  }
+  requestAnimationFrame(animateParticles);
+}
+
+initParticles();
+animateParticles();
