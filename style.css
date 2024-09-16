@@ -226,7 +226,8 @@ section {
   padding-bottom: 2rem;
 }
 
-.acara h3 {
+.acara h3,
+.last h3 {
   font-family: "spirited", sans-serif;
   font-size: 3.5rem;
   color: var(--pink);
@@ -391,12 +392,6 @@ hr {
 
 .card-body .col-md-6 span {
   font-size: 1.2rem; /* Ukuran teks */
-}
-
-.last h3 {
-  font-family: "Dancing Script", system-ui;
-  font-size: 3rem;
-  color: var(--pink);
 }
 
 /* Aturan untuk SVG secara umum *
