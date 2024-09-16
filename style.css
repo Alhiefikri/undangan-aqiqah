@@ -108,7 +108,7 @@ section {
 .hadiah h3 {
   color: var(--pink);
   font-family: "cabolafe", system-ui;
-  font-size: 2.2rem;
+  font-size: rem;
   font-weight: bold;
 }
 
@@ -578,5 +578,14 @@ svg path:nth-child(4) {
   }
   .acara .card-body .row .col-lg-12 span {
     text-align: center;
+  }
+}
+
+@media (max-width: 332px) {
+  .hero .text2 {
+    margin-top: 2rem;
+  }
+  .undangan h3 {
+    font-size: 1.7rem;
   }
 }
